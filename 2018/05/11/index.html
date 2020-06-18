@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JSフレームワーク活用事例 (Vue.js) | kntmr.github.io</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      h1, h2, h3, h4 {
+        margin-bottom: 0.5em;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-slide-content { padding-top: 2em; }
+      .content-full { padding-top: 0; }
+      .content-full pre { margin-top: 0.2em; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+## JSフレームワーク活用事例 (Vue.js)
+
+2018/05/11
+
+---
+
+### 事例
+
+某ECサイトのレビュー機能開発で Vue.js を利用
+
+---
+
+### 経緯
+
+- Javaアプリ(html/mayaa)には組み込みたくない
+
+- Webウィジェットのように独立した形で提供したい
+
+---
+
+### 選択肢
+
+- 生jsで作り込み
+
+- jQueryライブラリ
+
+- JSフレームワーク
+
+JSフレームワークのモジュールは最終的に1つのjsファイルにバンドルされるため、ウィジェット開発として使えそう。
+
+```html
+<div id="review-widget" data-page-size="3"></div>
+<script type="text/javascript" src="/js/system/review/review-widget.js"></script>
+```
+
+---
+
+### JSフレームワーク
+
+- Vue.js
+
+- React
+
+- Angular
+
+どれを採用してもできることに大きな差はない
+
+---
+
+### Vue.js
+
+- 開発コミュニティが活発
+
+- ドキュメントが充実している
+  - [スタイルガイド](https://jp.vuejs.org/v2/style-guide/)
+  - [クックブック](https://jp.vuejs.org/v2/cookbook/)
+
+- 手軽に始められる
+  - シンプルなAPIで敷居は低い (と思う)
+
+---
+
+class: center, middle
+
+## 準備 / 調査
+
+---
+
+要件整理と並行して、実際に必要になりそうなものにあたりをつけて技術調査。  
+当時、リストアップしたものは以下の通り。
+
+- フレームワーク
+- 開発環境
+- Webpack (ビルド, テスト)
+- Vue (コンポーネント)
+- vue-router
+- axios
+- Vuex (状態管理)
+- ウィジェット化
+- 画像アップロード
+- パラメータ渡し
+- モーダル表示
+- IE対応
+- プロパティ管理
+- ウィジェット外部のコンポーネント表示
+- エントリーポイント分割
+- ローカルデバッグ環境
+- デプロイ
+
+---
+
+調査内容をもとにドキュメントやサンプルアプリを用意して開発メンバーに展開。
+
+- 環境構築手順
+
+- 開発標準 (プロジェクト構成, 実装方針, デバッグ方法, ...)
+
+- サンプルアプリ
+
+---
+
+(参考) プロジェクト構成
+
+```sh
+├─build
+├─config                          ... 設定ファイル
+├─dev                             ... 開発用ページ
+│  ├─review-confirm
+│  ├─review-detail
+│  ├─review-history
+│  ├─review-images-by-item
+│  ├─review-new
+│  ├─review-widget
+│  ├─reviews-by-item
+│  ├─reviews-by-user
+│  ├─reviews-clipped
+│  └─user-follows
+├─dist
+├─node_modules
+├─src                             ... エントリーポイントの js を配置
+│  ├─api                         ... API アクセス
+│  ├─components                  ... 共通コンポーネント / 基底コンポーネント
+│  ├─pages                       ... ページコンポーネント
+│  ├─router                      ... ルーティング
+│  └─store
+│      └─modules                 ... 状態管理
+├─static
+└─test                            ... テストコード
+```
+
+---
+
+ワイヤーフレームをもとにざっくり画面設計して、コンポーネント構成図を作成。  
+一部のひとには割と好評だった。
+
+- ページコンポーネント
+
+- 共通コンポーネント
+
+- 基底コンポーネント
+
+---
+
+class: center, middle
+
+## 開発環境 / ライブラリ
+
+---
+
+### 開発環境
+
+- Visual Studio Code
+
+- Node.js
+
+- npm
+
+---
+
+### vue-cli
+
+- プロジェクトのテンプレート(雛形)を作成するツール
+- webpack テンプレートを利用 (少し webpack の知識が必要)
+
+```sh
+> npm install -g vue-cli
+> vue init webpack review-widget
+> cd review-widget
+> npm install
+```
+
+プロジェクト構成は vue-cli で自動生成したものをベースに今回の開発に合わせてカスタマイズした。
+
+---
+
+### Vuex
+
+- 状態管理ライブラリ
+- Flux パターンの Vue.js 実装
+
+アプリの状態を一元管理する仕組みとデータフローのルールを提供する。
+
+https://github.com/vuejs/vuex
+
+---
+
+(参考) Vuex
+
+.center[![Centered image](vuex.png)]
+
+---
+
+### その他
+
+- axios
+- vue-router
+- es6-promise
+- Avoriaz (今は vue-test-utils が公式ライブラリ)
+- Sinon.JS
+
+---
+
+class: center, middle
+
+## ふりかえり
+
+---
+
+### 公式ドキュメント
+
+公式ドキュメントを読む。スタイルガイドは必読。大事な基礎はだいたい書いてある。開発中に迷うことがあったら読み直す。
+
+今はクックブックもあるため、もう少し実践的なことも書いてあるはず。
+
+---
+
+### デザインとコンポーネント設計
+
+デザインとコンポーネントは密に関係し、きれいに設計するためには、それを意識したデザインを作る必要があると思われる。
+
+今回、基本的にデザインはこちらでコントロールできず、一部のコンポーネントに重複や無駄が残ってしまった。
+
+思い切ってページコンポーネントのみで構成するのもありかもしれない。
+
+---
+
+### Vuex
+
+なんでもかんでも Vuex に持たせてはだめ。コンポーネントの実装はシンプルになる(ように見える)が、その分、Vuex 内のコードが複雑になる。
+
+MVVM アーキテクチャの理解が必要。Vuex をどの範囲に適用するか考える。ViewModel と Model で持たせるべきデータを分離するとよさそう。
+
+引き続き模索中。
+
+シンプルなアプリであれば Vuex を使う必要はないかも。(※シンプル≠小規模)
+
+---
+
+### テストコード
+
+共通機能のところはテストコードを書いたが、全体適用は時間的に諦めた。テストライブラリの学習コストがやや高めで、そもそもテストコードを書くことに慣れてないと厳しい。
+
+今回は、JavaアプリのUT仕様書を少し改変して利用。
+
+---
+
+class: center, middle
+
+## まとめ
+
+---
+
+### まとめ
+
+- アプリの規模に関係なく使えそう
+
+- ドキュメントを読む (スタイルガイドは必読)
+
+- アーキテクチャとコンポーネント設計がキモ
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
