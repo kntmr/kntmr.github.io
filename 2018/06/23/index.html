@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Oracle Certified Java Programmer | kntmr.github.io</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      h1, h2, h3, h4 {
+        margin-bottom: 0.5em;
+      }
+      p {
+        margin-bottom: -0.5em;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-slide-content { padding-top: 2em; }
+      .content-full { padding-top: 0; }
+      .content-full pre { margin-top: 0.2em; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+## Oracle Certified Java Programmer
+
+2018/06/23
+
+---
+
+## Oracle Certified Java Programmer (OCJP)
+
+Oracle の Java SE 認定資格 (括弧内は試験の名前)
+
+- Bronze SE 7 / 8 (1Z0-814-JPN Java SE 7 / 8 Bronze)
+
+- Silver SE 8 (1Z0-808-JPN Java SE 8 Programmer I)
+
+- Gold SE 8 (1Z0-809-JPN Java SE 8 Programmer II)
+
+※  
+現時点では Java SE 8 の内容がベースになっている。  
+Java のリリースモデル変更に伴って認定資格の体系も変わるかもしれない。
+
+---
+
+### Bronze SE 7 / 8
+
+- プログラミング初学者向け (たぶん)
+
+### Silver SE 8
+
+- Java の開発経験が1～2年程度あれば合格できるレベル (たぶん)
+
+### Gold SE 8
+
+- Java の開発経験が数年程度あれば問題の内容は理解できるはず (たぶん)
+
+- 出題範囲は広く覚えることが多い
+
+  - 一度も使ったことがない標準 API
+
+  - 引数違いのオーバーロードメソッド
+
+---
+
+### 得られるもの
+
+- Java の基礎知識
+
+- 読解力
+
+### 失うもの
+
+- お金
+
+- 時間
+
+---
+
+### 読解力 (目コンパイル)
+
+- テキストで書いてあるコードを読んで解答する
+
+- 普段は IDE に頼りっきり
+
+- たまにひっかけ問題みたいなのもあったり
+
+---
+
+例) ※あえてシンタックスハイライトしてません
+
+```
+public class Main {
+
+    public static void main(String... args) {
+        greet("Hello!");
+    }
+
+    private void greet() {
+        System.out.println("Good morning!");
+    }
+
+    private void greet(String message) {
+        System.out.println(message);
+    }
+
+}
+```
+
+A. 「Good morning!」が出力される
+
+B. 「Hello!」が出力される
+
+C. 実行時エラー
+
+D. コンパイルエラー
+
+---
+
+### 読解力が活躍するケース
+
+コードレビュー
+
+- 特にブラウザ上でコードを読むとき
+
+- ブランチを利用して並行開発するフローではよくある
+
+余談) InnerSource
+
+- OSSの開発プロセスや文化を企業の中で実践する取り組み
+
+---
+
+### コードレビュー
+
+https://techlife.cookpad.com/entry/2018/06/19/110000
+
+---
+
+class: content-full
+
+レビュイー
+
+- レビュー前に完璧さを求める必要はない
+  - 途中の状態でレビュー依頼してもいい
+  - レビューしながらコードを仕上げるくらいの気持ち
+  - レビューをコミュニケーションツールとして使う
+- 特に重点的にレビューして欲しいところは事前に伝える
+  - キモなところや不安に感じてるところ
+- レビュー依頼前に diff を見る
+  - 3回くらい見てもいい、1晩寝かせてもいい
+
+レビュワー
+
+- わからないところは質問する
+  - 抜け漏れはないか、不安に感じてるところ
+  - レビューを通してコードや仕様を理解する (属人性をなくす)
+  - 誤りを指摘するだけがレビューではない
+- 改善点や代案を提示する (たまに褒めるのも大事)
+- 細かい指摘でも遠慮しない
+  - 不適切な名前や typo を放置しない (あとで grep できなくなる)
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
