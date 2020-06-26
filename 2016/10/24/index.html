@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>不安駆動開発 | kntmr.github.io</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3, h4 {
+        font-weight: normal;
+        margin-bottom: 0.5em;
+      }
+      img {
+        width: 70%;
+        border: 1px solid #6e6e6e;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-slide-content { padding-top: 2em; }
+      .content-full { padding-top: 0; }
+      .content-full pre { margin-top: 0.2em; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+## 不安駆動開発
+
+2016/10/24
+
+---
+
+### 
+
+プロジェクトに途中から参画したり、短いスパンでプロジェクトを転々としたり。
+
+お客様や業界、開発環境など、いろいろ変わる。
+
+業務や製品、既存システムなど、いかにキャッチアップするか。
+
+このあたりはいつも苦労するし、不安になる...。
+
+---
+
+### 
+
+どうするか？
+
+---
+
+### 
+
+どうするか？
+
+⇒ ドキュメントを読む
+
+---
+
+### 
+
+どうするか？
+
+⇒ ドキュメントを読む
+
+⇒ なかなか頭に入らない、飽きる、眠くなる
+
+---
+
+(余談) かつてこういう話がありました
+
+---
+
+(余談) かつてこういう話がありました
+
+目標管理システムが刷新された (Excel ⇒ Web ベースに)
+
+---
+
+(余談) かつてこういう話がありました
+
+目標管理システムが刷新された (Excel ⇒ Web ベースに)
+
+⇒ 使い方が分からない
+
+⇒「イントラに操作説明書があるから読みましょう」
+
+---
+
+(余談) ある日の目標管理の進捗:
+
+- チームA ⇒ 80%
+
+- チームB ⇒ 10%
+
+なぜなのか？
+
+---
+
+(余談) ある日の目標管理の進捗:
+
+- チームA ⇒ 80%
+
+- チームB ⇒ 10%
+
+なぜなのか？
+
+チームA:  
+⇒ 普段、業務でベンダーの製品を扱う  
+⇒ 分からないときはドキュメントを読む
+
+チームB:  
+⇒ 基本的に製品を扱うことはない  
+⇒ 分からないときはググる、聞く、なかったことにする
+
+---
+
+(余談) ある日の目標管理の進捗:
+
+- チームA ⇒ 80%
+
+- チームB ⇒ 10%
+
+なぜなのか？
+
+チームA:  
+⇒ 普段、業務でベンダーの製品を扱う  
+⇒ 分からないときはドキュメントを読む
+
+チームB:  
+⇒ 基本的に製品を扱うことはない  
+⇒ 分からないときはググる、聞く、なかったことにする
+
+### 結論:
+
+チームBの人間はドキュメントを読まない|読めない (部長談)
+
+---
+
+### 
+
+どうするか？
+
+⇒ ドキュメントを読む
+
+⇒ なかなか頭に入らない、飽きる、眠くなる
+
+---
+
+### 
+
+どうするか？
+
+⇒ ドキュメントを読む
+
+⇒ なかなか頭に入らない、飽きる、眠くなる
+
+⇒ 書いて覚える
+
+---
+
+### 
+
+どうするか？
+
+⇒ ドキュメントを読む
+
+⇒ なかなか頭に入らない、飽きる、眠くなる
+
+⇒ 書いて覚える
+
+⇒ Wiki を使う
+
+---
+
+### Wiki を使う
+
+- 業務や仕様の要点をまとめる
+
+- 用語集を作る
+
+書くことで頭の中を整理する。
+
+あとで読み返したり、後任メンバーが参照したり、何かと役に立つことも。
+
+---
+
+### 
+
+その他、ライブラリや API をどのように使えばいいか不安になるとき。
+
+例)
+
+```java
+Boolean.valueOf("true"); // => true
+Boolean.valueOf("TRUE"); // => true？
+Boolean.valueOf(""); // => false？
+Boolean.valueOf(null); // => false？ぬるぽ？
+```
+
+---
+
+### 
+
+簡単なテストコードを書く。
+
+.center[![Centered image](image1.JPG)]
+
+---
+
+### 
+
+昔は、Eclipse プロジェクトを別に用意して調べたりしてた。
+
+今なら JUnit を使う方が手軽でよい。
+
+『学習テスト』と呼ばれる手法。(らしい)
+
+ライブラリや API の調査以外に、メソッド単位でロジックを切り出してテストコードを書いて検証する。ある程度、検証できたらプロダクションコードに移す。
+
+---
+
+### まとめ
+
+不器用ではありますが、このような方法でプロジェクトの立ち上がりや日常の開発で抱える不安を解消しています。
+
+今回、これを「不安駆動開発」と命名しました。現場からは以上です。
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
