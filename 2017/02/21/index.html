@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Microservices / Microservice Architecture | kntmr.github.io</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3, h4 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      img {
+        width: 100%;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-slide-content { padding-top: 2em; }
+      .content-full { padding-top: 0; }
+      .content-full pre { margin-top: 0.2em; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+## Microservices / Microservice Architecture
+
+2017/02/21
+
+---
+
+### Microservices / Microservice Architecture
+
+- マイクロサービス / マイクロサービスアーキテクチャ
+
+- アプリケーションを小さな独立したサービス群の組み合わせで構築する手法
+
+- それぞれのサービスは HTTP のような標準的なプロトコルで連携する
+
+---
+
+例) ECサイト
+
+.center[![Centered image](image1.png)]
+
+---
+
+### モノリシックアプリケーション
+
+従来のアプリケーションはサーバーサイドで動作する単一の実行可能ファイル。
+
+- 小さな変更であってもアプリケーション全体のリビルドとデプロイが必要
+
+- 部分的にスケールが必要であってもアプリケーション全体のスケールが必要
+
+※これ自体は悪いことではなく自然なこと
+
+---
+
+### マイクロサービスアーキテクチャへ
+
+ビジネスの変化によってアプリケーションに対して様々な変更が要求される。
+
+変更の規模や頻度はアプリケーションの領域によってマチマチ。
+
+これらの課題にどのように対応していくか試行錯誤した結果、マイクロサービスアーキテクチャのような構成でシステムを構築することが主流になった。
+
+それぞれのサービスを監視するような統合的な仕組みは必要ではあるが、採用する技術やライフサイクルはサービスによって異なる。
+
+---
+
+### SOA / サービス指向アーキテクチャ
+
+マイクロサービスアーキテクチャのような設計手法は先進的で珍しいものというわけではない。
+
+昔から同じような思想で設計することはあった。  
+⇒ SOA / サービス指向アーキテクチャ
+
+サービス指向アーキテクチャとマイクロサービスアーキテクチャの基本的な思想は同じと考えてよい。(と思う)
+
+---
+
+### 
+
+実際、マイクロサービスアーキテクチャは新しく考案された設計手法ではない。
+
+いい感じの大規模な Web サービスをいろいろ分析してみたところ、似たような特徴が見られた。
+
+これを「マイクロサービスアーキテクチャ」と呼ぶことにする。
+
+---
+
+### 
+
+サービス指向アーキテクチャは「サービスとして部品化したソフトウェアをいかに連携するか」という**技術的な課題に対する手法**であると考えられる。
+
+マイクロサービスアーキテクチャは「肥大化した Web サービスに対する様々な変更にどのように耐えるか」という**ビジネス的な課題に対応した成果**であると考えられる。
+
+---
+
+(参考) コンウェイの法則
+
+システムを設計する組織は、これらの組織のコミュニケーション構造をそのまま反映した設計を生み出す
+
+「アーキテクチャは組織に従う」
+
+「組織はアーキテクチャに従う」
+
+---
+
+### 
+
+元ネタ:
+https://martinfowler.com/articles/microservices.html
+
+(日本語訳)
+http://kimitok.hateblo.jp/entry/2014/11/09/211820
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
